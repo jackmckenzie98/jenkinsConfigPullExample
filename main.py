@@ -29,7 +29,8 @@ with open("apiCalls.json") as f:
     endpoint = json.load(f)
 
 session = requests.Session()
-with open("secrets.json") as f:
+secret_file = os.environ['SECRETS_FILE']
+with open(secret_file) as f:
     secrets = json.load(f)
 
 session.auth = (secrets["username"], secrets["password"])
